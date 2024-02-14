@@ -21,8 +21,6 @@ public class ChatHandler extends TextWebSocketHandler{
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
 		// 세션 아이디를 키로 사용, session을 값으로
 		sessions.put(session.getId(), session);
-		System.out.println(sessions.size());
-		System.out.println("cookie : "+session.getHandshakeHeaders().COOKIE);
 	}
 
 	//메세지를 다루는 메서드

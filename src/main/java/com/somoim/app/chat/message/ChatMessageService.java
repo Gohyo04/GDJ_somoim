@@ -1,4 +1,4 @@
-package com.somoim.app.chat;
+package com.somoim.app.chat.message;
 
 import java.util.HashMap;
 import java.util.List;
@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.somoim.app.chat.room.ChatRoomDAO;
 import com.somoim.app.member.MemberDTO;
 
 @Service
@@ -15,15 +16,18 @@ public class ChatMessageService {
 	@Autowired
 	private ChatMessageDAO chatMessageDAO;
 	
+	@Autowired
+	private ChatRoomDAO chatRoomDAO;
+	
 	public void addChat(Long chatRoomNum, MemberDTO memberDTO) {
 		Map<String, Object> map = new HashMap<>();
 		
-		List<Long> roomList = chatMessageDAO.chatRoomCh();
+		List<Long> roomList = chatRoomDAO.chatRoomCh();
 		
 		// 방이 없다면 (방번호로 찾기)
 		if(!roomList.contains(chatRoomNum)){
 			// 방 생성
-			chatMessageDAO.addChatRoom();			
+			chatRoomDAO.addChatRoom();			
 		}
 		
 		// 채팅

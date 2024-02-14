@@ -1,8 +1,6 @@
 package com.somoim.app;
 
-import static org.junit.Assert.*;
-
-import java.util.List;
+import static org.junit.Assert.assertNotEquals;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;

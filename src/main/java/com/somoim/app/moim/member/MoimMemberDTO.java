@@ -1,10 +1,6 @@
 package com.somoim.app.moim.member;
 
 import java.util.Date;
-import java.util.List;
-
-import com.somoim.app.moim.MoimDTO;
-import com.somoim.app.moim.member.role.MoimRoleDTO;
 
 public class MoimMemberDTO {
 	private String userName;

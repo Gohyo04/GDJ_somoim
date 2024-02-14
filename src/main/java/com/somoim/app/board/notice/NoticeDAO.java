@@ -1,6 +1,5 @@
 package com.somoim.app.board.notice;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 

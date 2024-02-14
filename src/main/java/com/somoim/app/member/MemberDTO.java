@@ -1,7 +1,5 @@
 package com.somoim.app.member;
 
-import java.util.List;
-
 public class MemberDTO {
 	
 	private String userName;
