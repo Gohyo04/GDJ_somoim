@@ -86,7 +86,7 @@
 											<div class="message my-message">Are we meeting today?</div>
 										</li>
 										<li class="clearfix">
-											<input type="hidden" id="userCh" value="${user.nickName}">
+											<input type="hidden" id="userCh" value="${user.userName}">
 											<div class="message-data">
 												<span class="message-data-time">10:15 AM, Today</span>
 											</div>
