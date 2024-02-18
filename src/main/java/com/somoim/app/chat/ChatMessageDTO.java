@@ -8,7 +8,7 @@ public class ChatMessageDTO {
 	private Long chatRoomNum;
 	private String userName;
 	private String chatText;
-	private Date chatMessageStamp;
+	private String chatTimeStamp;
 	
 	
 	public Long getMessageNum() {
@@ -35,12 +35,11 @@ public class ChatMessageDTO {
 	public void setChatText(String chatText) {
 		this.chatText = chatText;
 	}
-	public Date getChatMessageStamp() {
-		return chatMessageStamp;
+	public String getChatTimeStamp() {
+		return chatTimeStamp;
 	}
-	public void setChatMessageStamp(Date chatMessageStamp) {
-		this.chatMessageStamp = chatMessageStamp;
+	public void setChatTimeStamp(String chatTimeStamp) {
+		this.chatTimeStamp = chatTimeStamp;
 	}
-	
 	
 }

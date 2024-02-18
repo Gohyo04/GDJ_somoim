@@ -8,8 +8,10 @@ console.log('js');
 const sendMsg = document.getElementById('sendMsg');
 
 const chat_record = document.getElementById('chat_record');
-const userCh = document.getElementById('userCh');
+const userIdCh = document.getElementById('userCh');
 const msgForm = document.getElementById('msgForm');
+
+let scrollToBottom = chatHistory.scrollHeight - chatHistory.scrollTop === chatHistory.clientHeight;
 
 let sock = new SockJS("http://localhost:80/chat");
 
@@ -30,19 +32,19 @@ sendMsg.addEventListener('keyup',(e) => {
                 "chatText" : chatText,
                 "chatRoomNum" : 1
             };
-            chatMessage.userName = userCh.value;
+            chatMessage.userName = userIdCh.value;
             console.log(chatMessage.userName);
             chatMessage.chatText = sendMsg.value;
 
             
 
-            // sock.send(userCh.value+":"+sendMsg.value);
+            // sock.send(userIdCh.value+":"+sendMsg.value);
             sock.send(JSON.stringify(chatMessage));
             
             // fetch
 			
-            // mySend(userCh.value +" : "+sendMsg.value);
-
+            // mySend(userIdCh.value +" : "+sendMsg.value);
+            scroller();
         	sendMsg.value = '';
         }
 	}
@@ -70,8 +72,8 @@ sock.onmessage =  function (e){
     let str = ar[1].trim().substring(12,ar[1].length-1);
 
     console.log(user);
-    console.log(userCh.value);
-    if(user === userCh.value){
+    console.log(userIdCh.value);
+    if(user === userIdCh.value){
         mySend(str, date);
     }else{
         otherSend(str, date);
@@ -150,7 +152,7 @@ function otherSend(msg, date){
 let chatHistory = document.getElementById('chat-history');
 let newMsgCount = 0;
 const newCntBtn = document.querySelector('#bBtn > div');
-let scrollToBottom = chatHistory.scrollHeight - chatHistory.scrollTop === chatHistory.clientHeight;
+
 
 // scroll 밑에 고정
 function scroller(){

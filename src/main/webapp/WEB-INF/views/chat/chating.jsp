@@ -28,6 +28,7 @@
 									</div>
 									<input type="text" class="form-control" placeholder="Search...">
 								</div>
+								
 								<!-- 채팅방 목록 -->
 								<ul class="list-unstyled chat-list mt-2 mb-0">
 									<li class="clearfix">
@@ -36,7 +37,16 @@
 											<div class="name my-4">Vincent Porter</div>
 										</div>
 									</li>
+									<c:forEach var="item" items="${roomList}">
+										<li class="clearfix">
+											<img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="avatar">
+											<div class="about">
+												<div class="name my-4">채팅방 ${item.chatRoomNum}</div>
+											</div>
+										</li>
+									</c:forEach>
 								</ul>
+								
 							</div>
 							<div class="chat">
 								<div class="chat-header clearfix">
@@ -60,11 +70,7 @@
 								</div>
 								<!-- 채팅기록 -->
 								<div class="chat-history" id="chat-history" style="overflow-y: scroll; height: 450px;">
-									<!-- visually-hidden -->
-									<!-- <span class="position-fixed" id="bBtn">
-										<div style="transform:translateX(500%) !important"
-											class="btn btn-light">Count</div>
-									</span> -->
+									
 									<ul class="m-b-0" id="chat_record">
 										<!-- 상대방 (.text-right, float-right) -->
 										<li class="clearfix">
@@ -86,7 +92,8 @@
 											<div class="message my-message">Are we meeting today?</div>
 										</li>
 										<li class="clearfix">
-											<input type="hidden" id="userCh" value="${user.nickName}">
+											<input type="hidden" id="userCh" value="${user.userName}">
+
 											<div class="message-data">
 												<span class="message-data-time">10:15 AM, Today</span>
 											</div>
@@ -94,6 +101,30 @@
 												results
 												to show you.</div>
 										</li>
+										<c:forEach var="item" items="${list}" >
+											<c:if test="${item.userName eq user.userName}">
+												<li class="clearfix">
+													<input type="hidden" id="userCh" value="${user.userName}">
+
+													<div class="message-data">
+														<span class="message-data-time">${item.chatTimeStamp}</span>
+													</div>
+													<div class="message my-message">${item.chatText}</div>
+												</li>
+											</c:if>
+											<c:if test="${item.userName ne user.userName}">
+												<li class="clearfix">
+													<div class="message-data text-right">
+														<span class="message-data-time"><h6>${item.userName}</h6>${item.chatTimeStamp}</span>
+														<img src="https://bootdey.com/img/Content/avatar/avatar7.png"
+															alt="avatar">
+													</div>
+													<div class="message other-message float-right">
+														${item.chatText}
+													</div>
+												</li>
+											</c:if>
+										</c:forEach>
 									</ul>
 
 								</div>

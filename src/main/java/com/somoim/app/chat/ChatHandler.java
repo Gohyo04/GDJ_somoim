@@ -18,8 +18,6 @@ public class ChatHandler extends TextWebSocketHandler{
 	@Autowired
 	private ChatMessageService chatMessageService;
 	
-	private MemberDTO memberDTO;
-	
 	private static HashMap<String, WebSocketSession> sessions = new HashMap<>();	
 	
 	 // group( 정모, 모임, 1:1 )에 따른 Map 나누기 
@@ -36,19 +34,12 @@ public class ChatHandler extends TextWebSocketHandler{
 	//메세지를 다루는 메서드
 	@Override
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
-		
 		ObjectMapper objectMapper = new ObjectMapper();
-		System.out.println(0);
-		ChatMessageDTO chatMessageDTO = objectMapper.readValue(message.getPayload(), ChatMessageDTO.class);
-		System.out.println(1);
-		try {
-			int result = chatMessageService.addChat(chatMessageDTO);
-		}catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
 		
-		System.out.println(2);
+		ChatMessageDTO chatMessageDTO = objectMapper.readValue(message.getPayload(), ChatMessageDTO.class);
+		
+		int result = chatMessageService.addChat(chatMessageDTO);
+		
 		//전송된 메시지를 List의 모든 세션에 전송
 		for (WebSocketSession s : sessions.values()) {
 			s.sendMessage(message);
