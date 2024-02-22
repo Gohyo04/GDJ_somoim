@@ -34,7 +34,7 @@
 						<li class="nav-item"><a class="nav-link" href="./together"
 							style="color: white">정모</a></li>
 						<li class="nav-item"><a class="nav-link" href="/chat"
-							style="color: white">채팅</a></li>
+							style="color: white" data-moimChat="${dto}">채팅</a></li>
 					</ul>
 				</div>
 			</div>
@@ -488,6 +488,9 @@
 		class="lni lni-chevron-up"></i>
 	</a>
 
+	<!-- ========================= JS src ========================= -->
+	<script src="/resources/js/chat/moimChat.js"></script>
+	
 	<!-- ========================= JS improt ========================= -->
 	<c:import url="../temps/footer.jsp"></c:import>
 </body>
