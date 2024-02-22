@@ -1,10 +1,7 @@
 console.log("moimChat");
 
-let navChat = document.querySelector('.nav > li:last-child');
+let moimName = document.querySelector('.page-title');
 
-let a = navChat.lastChild.getAttribute('data-moimChat');
-console.log(a);
+console.log(moimName.innerText);
 
-navChat.addEventListener('click',()=>{
-    console.log(a);
-})
+

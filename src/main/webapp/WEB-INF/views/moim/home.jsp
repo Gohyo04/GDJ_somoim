@@ -34,7 +34,7 @@
 						<li class="nav-item"><a class="nav-link" href="./together"
 							style="color: white">정모</a></li>
 						<li class="nav-item"><a class="nav-link" href="/chat"
-							style="color: white" data-moimChat="${dto}">채팅</a></li>
+							style="color: white" value="${dto.moimName}")>채팅</a></li>
 					</ul>
 				</div>
 			</div>
