@@ -1,6 +1,7 @@
 package com.somoim.app.board.notice;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,13 +17,13 @@ public class NoticeDAO  implements BoardDAO{
 
 	@Autowired
 	private SqlSession sqlSession;
-	
+
 	private final String namespace="com.somoim.app.board.notice.NoticeDAO.";
-	
+
 	@Override
-	public Long getTotalCount(Pager pager) throws Exception {
+	public Long getTotalCount(Map<String, Object>map) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSession.selectOne(namespace+"getTotalCount", pager);
+		return sqlSession.selectOne(namespace+"getTotalCount", map);
 	}
 
 	@Override
@@ -30,6 +31,7 @@ public class NoticeDAO  implements BoardDAO{
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(namespace+"getList", pager);
 	}
+
 
 	@Override
 	public BoardDTO getDetail(BoardDTO boardDTO) throws Exception {
@@ -54,14 +56,19 @@ public class NoticeDAO  implements BoardDAO{
 		// TODO Auto-generated method stub
 		return  sqlSession.delete(namespace+"setDelete", boardDTO);
 	}
-	
+
 	public int setFileAdd(BoardFileDTO boardFileDTO)throws Exception{
 		return sqlSession.insert(namespace+"setFileAdd", boardFileDTO);
 	}
-	
+
+
 	public List<BoardFileDTO> getFileList(BoardDTO boardDTO)throws Exception{
 		return sqlSession.selectList(namespace+"getFileList", boardDTO);
 	}
-	
+
+	public List<BoardDTO> getListJson(Map<String, Object> map) throws Exception{
+		return sqlSession.selectList(namespace+"getListJson", map);
+	}
+
 
 }

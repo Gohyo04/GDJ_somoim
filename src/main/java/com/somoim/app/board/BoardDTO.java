@@ -10,6 +10,20 @@ private String boardTitle;
 private String boardText;
 private String boardWriter;
 private Date boardDate;
+private Long boardCategory;
+private Long boardSecret;
+public Long getBoardSecret() {
+	return boardSecret;
+}
+public void setBoardSecret(Long boardSecret) {
+	this.boardSecret = boardSecret;
+}
+public Long getBoardCategory() {
+	return boardCategory;
+}
+public void setBoardCategory(Long boardCategory) {
+	this.boardCategory = boardCategory;
+}
 public Long getBoardNum() {
 	return boardNum;
 }
@@ -47,7 +61,7 @@ public void setBoardDate(Date boardDate) {
 	this.boardDate = boardDate;
 }
 
-	
-	
-	
+
+
+
 }

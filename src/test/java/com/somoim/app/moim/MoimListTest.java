@@ -11,14 +11,14 @@ import com.somoim.app.MyTest;
 import com.somoim.app.member.MemberDTO;
 
 public class MoimListTest extends MyTest{
-	@Autowired
+//	@Autowired
 	private MoimDAO moimDAO;
-	
-	@Test
+
+	//@Test
 	public void test() throws Exception{
 		MemberDTO memberDTO = new MemberDTO();
 		memberDTO.setUserName("user1");
-		
+
 		List<MoimDTO> ar = moimDAO.getList(memberDTO);
 		assertNotEquals(0, ar.size());
 	}

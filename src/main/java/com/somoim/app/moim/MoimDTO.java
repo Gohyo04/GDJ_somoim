@@ -1,29 +1,61 @@
 package com.somoim.app.moim;
 
-import java.util.Date;
 
+
+import java.sql.Date;
+import java.util.List;
+
+import com.somoim.app.chat.ChatRoomDTO;
 import com.somoim.app.moim.member.MoimMemberDTO;
 
 public class MoimDTO {
+
 	private Long moimNum;
 	private String moimName;
-	private String moimHead;
 	private String moimRegion;
 	private String moimCategory;
-	private Long moimMemCount;
 	private Date moimDate;
+	private String moimText;
+	private Long moimMemCount;
+	private String moimHead;
+	private String address;
+
+	private MoimFileDTO moimFileDTO;
 	private MoimMemberDTO moimMemberDTO;
+
 	
-	
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	private ChatRoomDTO chatRoomDTO;
+
+	public ChatRoomDTO getChatRoomDTO() {
+		return chatRoomDTO;
+	}
+	public void setChatRoomDTO(ChatRoomDTO chatRoomDTO) {
+		this.chatRoomDTO = chatRoomDTO;
+	}
 	public MoimMemberDTO getMoimMemberDTO() {
 		return moimMemberDTO;
 	}
 	public void setMoimMemberDTO(MoimMemberDTO moimMemberDTO) {
 		this.moimMemberDTO = moimMemberDTO;
 	}
-	
-	
-	
+	public MoimFileDTO getMoimFileDTO() {
+		return moimFileDTO;
+	}
+	public void setMoimFileDTO(MoimFileDTO moimFileDTO) {
+		this.moimFileDTO = moimFileDTO;
+	}
+	public String getMoimText() {
+		return moimText;
+	}
+	public void setMoimText(String moimText) {
+		this.moimText = moimText;
+	}
 	public Long getMoimNum() {
 		return moimNum;
 	}
@@ -36,6 +68,7 @@ public class MoimDTO {
 	public void setMoimName(String moimName) {
 		this.moimName = moimName;
 	}
+
 	public String getMoimHead() {
 		return moimHead;
 	}
