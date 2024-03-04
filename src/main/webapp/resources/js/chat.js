@@ -169,6 +169,7 @@ let chatRoom = document.querySelector(".chat-list");
 
 // 채팅방을 클릭하면 DB에서 채팅기록 가져오기
 chatRoom.addEventListener('click',(e)=>{
+    userListUl.innerHTML = '';
     chat_record.innerHTML = null;
     if(e.target.classList.contains('clearfix')){
         let n = e.target.getAttribute('data-roomNum');
@@ -182,7 +183,6 @@ chatRoom.addEventListener('click',(e)=>{
             })
             .then(r => r.json())
             .then(r => {
-                console.log(r);
                 for(let i=0;i<r.record.length;i++){
                  let msg = r.record[i].chatText;
                  let date = r.record[i].chatTimeStamp;
@@ -199,7 +199,7 @@ chatRoom.addEventListener('click',(e)=>{
                     let user = r.chatUser[i].nickName;
                     getUserList(user)
                 }
-                
+
             scroller();
         });
 
@@ -227,7 +227,6 @@ userList.addEventListener('click',()=>{
 closeBtn.addEventListener('click',()=>{
     userModal.classList.add('d-none');
     userModal.classList.remove('d-block');
-    userListUl.innerHTML = '';
 });
 
 function getUserList(user){

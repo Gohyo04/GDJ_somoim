@@ -24,7 +24,6 @@ public class ChatHandler extends TextWebSocketHandler{
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
 		// 세션 아이디를 키로 사용, session을 값으로
 		System.out.println("연결");
-		System.out.println(session);
 		sessionList.add(session);
 	}
 
@@ -39,17 +38,12 @@ public class ChatHandler extends TextWebSocketHandler{
 		if(!chatMessageService.chatHistory(chatMessageDTO).isEmpty()) {
 			chat = chatMessageService.chatHistory(chatMessageDTO).get(0).getChatRoomNum();
 		}
-		//chatMessageDTO.setNickName(chatMessageDTO.getNickName());
-		//System.out.println(chatMessageDTO.toString());
 		
 		int result = chatMessageService.addChat(chatMessageDTO);
 		//전송된 메시지를 List의 모든 세션에 전송
 		for (WebSocketSession s : sessionList) {
 			
 			if(chat == chatMessageDTO.getChatRoomNum() && result>0) {
-				System.out.println("------------------------");
-				System.out.println(message.getPayload());
-				
 				s.sendMessage(message);
 			}			
 		}
